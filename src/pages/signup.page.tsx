@@ -3,8 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -48,13 +46,16 @@ const SignUp: React.FC<Props> = () => {
         const username: any = data.get('username');
         const email: any = data.get('email');
         const password: any = data.get('password');
+        const checkPassword: any = data.get('checkPassword');
 
         if (typeof (username) !== 'string' || username.length < 3) {
             setAlert({ message: 'Username must be over 3 letters', successful: false, open: true });
-        } else if (typeof (email) !== 'string' || email.length === 0) {
+        } else if (typeof (email) !== 'string' || email.length === 0 || !email.includes('@')) {
             setAlert({ message: 'Invalid Email', successful: false, open: true });
         } else if (typeof (password) !== 'string' || password.length < 8) {
             setAlert({ message: 'Password should be over 8 letters', successful: false, open: true });
+        } else if (typeof (checkPassword) !== 'string' || checkPassword!=password) {
+            setAlert({ message: 'Password Unmatch', successful: false, open: true });
         } else {
             AuthService.register(username, email, password).then(
                 response => {
@@ -124,6 +125,17 @@ const SignUp: React.FC<Props> = () => {
                                     label="Password"
                                     type="password"
                                     id="password"
+                                    autoComplete="new-password"
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    name="checkPassword"
+                                    label="Check Password"
+                                    type="password"
+                                    id="checkPassword"
                                     autoComplete="new-password"
                                 />
                             </Grid>
