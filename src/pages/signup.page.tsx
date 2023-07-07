@@ -77,11 +77,11 @@ const SignUp: React.FC<Props> = () => {
                         }}
                     >
                         <Paper sx={{ mt: '120px', padding: '40px' }}>
-                       
-                               <div className='logo'><img src='logo.png' style={{ width: '50%', marginBottom: '20px', cursor: 'pointer'}} onClick={() => { navigate('/') }}></img></div>
-                                    
-                             
-                         
+
+                            <div className='logo'><img src='logo.png' style={{ width: '50%', marginBottom: '20px', cursor: 'pointer' }} onClick={() => { navigate('/') }}></img></div>
+
+
+
                             <Typography component="h1" variant="h5" align='center'>
                                 Sign up
                             </Typography>
@@ -130,7 +130,6 @@ const SignUp: React.FC<Props> = () => {
                                             autoComplete="new-password"
                                         />
                                     </Grid>
-
                                 </Grid>
                                 <Button
                                     type="submit"
@@ -142,7 +141,7 @@ const SignUp: React.FC<Props> = () => {
                                 </Button>
                                 <Grid container justifyContent="flex-end">
                                     <Grid item>
-                                        <Link href="/login" variant="body2">
+                                        <Link onClick={() => { navigate('/login') }} style={{ cursor: 'pointer' }}>
                                             Already have an account? Sign in
                                         </Link>
                                     </Grid>
@@ -150,12 +149,8 @@ const SignUp: React.FC<Props> = () => {
                             </Box>
                             <Copyright sx={{ mt: 5 }} />
                         </Paper>
-
                     </Box>
-
                 </Container></div>
-
-
         </ThemeProvider>
     );
 }

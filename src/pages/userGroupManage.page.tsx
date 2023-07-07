@@ -200,14 +200,7 @@ const EnhancedTable: React.FC<Props> = () => {
     }
 
     const updateUserGroups = (field: string, value: string, newMember: string) => {
-        userService.updateUserGroups({ selected: selected[0], field: field, value: value, newMember: newMember }).then(response => {
-            setAlert({ message: response.data.message, successful: true, open: true });
-            getGroups();
-        }).catch(error => {
-            const resMessage = (error.response && error.response.data &&
-                error.response.data.message) || error.message || error.toString();
-            setAlert({ message: resMessage, successful: false, open: true });
-        });
+       
     }
 
     const rename = () => {
